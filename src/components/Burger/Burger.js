@@ -5,9 +5,9 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 const burger = ({ ingredients }) => {
   // получаем массив из переданных ингредиентов
   let transformedIngredients = Object.keys(ingredients)
-    .map( igKey => {
-      return [...Array(ingredients[igKey])].map((_, i) => {
-       return  <BurgerIngredient key={igKey + i} type={igKey}/>;
+    .map( ingredient => {
+      return [...Array(ingredients[ingredient])].map((_, i) => {
+       return  <BurgerIngredient key={ingredient + i} type={ingredient}/>;
       });
     })
     .flat(); // делаем массив плоским!
