@@ -47,7 +47,7 @@ export default class BurgerBuilder extends Component {
   }
 
   render() {
-    const { ingredients } = this.state;
+    const { ingredients, totalPrice } = this.state;
     const disabledInfo = { ...ingredients }; // copy object
 
     for (let key in disabledInfo) {
@@ -61,6 +61,7 @@ export default class BurgerBuilder extends Component {
           ingredientAdded = {this.addIngredientHandler}
           ingredientRemoved = {this.removeIngredientHandler}
           disabled = {disabledInfo}
+          price = {totalPrice}
         />
       </Aux>
     )

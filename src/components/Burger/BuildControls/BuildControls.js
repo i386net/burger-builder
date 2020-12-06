@@ -6,6 +6,8 @@ import CONTROLS from '../../../constants/controls';
 const BuildControls = (props) => {
   return (
     <div className={styles.BuildControls}>
+      {/* вывод цены + 2 знака после запятой*/}
+      <p>Current Price: {props.price.toFixed(2)}</p>
       {CONTROLS.map(({label, type}) => {
         return (
             <BuildControl
