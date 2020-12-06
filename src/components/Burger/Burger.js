@@ -7,12 +7,12 @@ const burger = ({ ingredients }) => {
   let transformedIngredients = Object.keys(ingredients)
     .map( ingredient => {
       return [...Array(ingredients[ingredient])].map((_, i) => {
-       return  <BurgerIngredient key={ingredient + i} type={ingredient}/>;
+        return  <BurgerIngredient key={ingredient + i} type={ingredient}/>;
       });
     })
     .flat(); // делаем массив плоским!
     // .reduce((arr, el) => arr.concat(el), []);
-  console.log(transformedIngredients)
+
   if(transformedIngredients.length === 0) {
     //если ингредиентов нет выводим сообщение!
     transformedIngredients = <p>Please start adding ingredients!</p>
