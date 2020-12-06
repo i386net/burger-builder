@@ -10,7 +10,7 @@ const burger = ({ ingredients }) => {
         return  <BurgerIngredient key={ingredient + i} type={ingredient}/>;
       });
     })
-    .flat(); // делаем массив плоским!
+    .flat(); // делаем массив плоским! [meat, meat, salad, salad...]
     // .reduce((arr, el) => arr.concat(el), []);
 
   if(transformedIngredients.length === 0) {
