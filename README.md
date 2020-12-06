@@ -1,11 +1,9 @@
 
 <p align="center">
-  <img width="460" height="300" src="https://i.ibb.co/Kq2NjTF/burger.png">
+  <img width="460" height="300" src="https://i.ibb.co/Kq2NjTF/burger.png" alt="Burger">
 </p>
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center" style="color:orange">Burger Builder React App</h2>
 
 ## Available Scripts
 
