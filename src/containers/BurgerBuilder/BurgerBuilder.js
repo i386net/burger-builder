@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import INGREDIENT_PRICES from '../../constants/ingridient-prices';
 
-const INGREDIENT_PRICES = {
-  salad: 0.5,
-  bacon: 0.7,
-  meat: 1.5,
-  cheese: 0.5,
-};
+// const INGREDIENT_PRICES = {
+//   salad: 0.5,
+//   bacon: 0.7,
+//   meat: 1.5,
+//   cheese: 0.5,
+// };
 
 export default class BurgerBuilder extends Component {
   state = {
