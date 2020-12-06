@@ -3,23 +3,20 @@ import styles from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
 import CONTROLS from '../../../constants/controls';
 
-//ингредиенты для списка
-// const controls = [
-//   {label: 'Salad', type: 'salad'},
-//   {label: 'Meat', type: 'meat'},
-//   {label: 'Bacon', type: 'bacon'},
-//   {label: 'Cheese', type: 'cheese'},
-// ];
-
 const BuildControls = (props) => {
   return (
     <div className={styles.BuildControls}>
-      {CONTROLS.map(({label, type}) => (
-        <BuildControl
-          key={label}
-          label={label}
-          added={() => props.ingredientAdded(type)}
-        />))}
+      {CONTROLS.map(({label, type}) => {
+        return (
+            <BuildControl
+              key={label}
+              label={label}
+              added={() => props.ingredientAdded(type)}
+              removed={() => props.ingredientRemoved(type)}
+              disabled={props.disabled[type]}
+            />);
+        }
+      )}
     </div>
   )
 }
