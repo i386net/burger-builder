@@ -5,7 +5,7 @@ import INGREDIENT_PRICES from '../../../constants/ingridient-prices';
 const OrderSummary = (props) => {
   const ingredientsSummary = Object.entries(props.ingredients).map(([ingredient, value]) => {
     return (
-      <li key={ingredient}>{ingredient}: {value} х {INGREDIENT_PRICES[ingredient]} </li>
+      <li key={ingredient}>{ingredient}: {value} . . . . х . . . . {INGREDIENT_PRICES[ingredient]} </li>
     );
   });
 
