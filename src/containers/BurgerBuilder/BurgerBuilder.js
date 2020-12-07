@@ -64,6 +64,10 @@ export default class BurgerBuilder extends Component {
     })
   }
 
+  purchaseCancelHandler = () => {
+    this.setState({purchasing: false});
+  }
+
   render() {
     const { ingredients, totalPrice, purchasable } = this.state;
     const disabledInfo = { ...ingredients }; // copy object
@@ -74,7 +78,7 @@ export default class BurgerBuilder extends Component {
 
     return (
       <Aux>
-        <Modal show={this.state.purchasing}>
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseHandler}>
           <OrderSummary ingredients={ingredients} price={totalPrice}/>
         </Modal>
         <Burger ingredients={ingredients}/>
