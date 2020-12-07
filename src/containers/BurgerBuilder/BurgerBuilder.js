@@ -15,7 +15,8 @@ export default class BurgerBuilder extends Component {
       cheese: 0,
     },
     totalPrice: 4,
-    purchasable: false,
+    purchasable: false, // активация кнопки
+    purchasing: false, // активация модального окна!
   }
 
   updatePurchaseState = (ingredients) => {
@@ -57,6 +58,12 @@ export default class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIngredients);
   }
 
+  purchaseHandler = () => {
+    this.setState({
+      purchasing: !this.state.purchasing, // todo: или сделать true?
+    })
+  }
+
   render() {
     const { ingredients, totalPrice, purchasable } = this.state;
     const disabledInfo = { ...ingredients }; // copy object
@@ -67,7 +74,7 @@ export default class BurgerBuilder extends Component {
 
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={ingredients} price={totalPrice}/>
         </Modal>
         <Burger ingredients={ingredients}/>
@@ -77,6 +84,7 @@ export default class BurgerBuilder extends Component {
           disabled = {disabledInfo}
           price = {totalPrice}
           purchasable={purchasable}
+          ordered={this.purchaseHandler}
         />
       </Aux>
     )
