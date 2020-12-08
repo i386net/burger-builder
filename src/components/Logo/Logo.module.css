@@ -1,0 +1,12 @@
+.Logo {
+  background-color: #030303;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.Logo__image {
+  height: 65%;
+}
