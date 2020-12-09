@@ -1,0 +1,23 @@
+.NavItem {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.NavItem__link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 10px;
+  border-bottom: 4px solid transparent;
+  box-sizing: border-box;
+  display: block;
+}
+
+.NavItem__link:hover,
+.NavItem__link:active,
+.NavItem__link_active {
+  background-color: #8f5c2c70;
+  border-bottom: 4px solid #40a4c8;
+  color: #ffffff;
+}
