@@ -14,3 +14,14 @@
 .Toolbar__nav {
   height: 100%;
 }
+
+.Toolbar__logo {
+  height: 100%;
+}
+
+@media (max-width: 500px) {
+  .Toolbar__nav_desktop {
+    display: none;
+  }
+
+}
