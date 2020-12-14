@@ -1,0 +1,9 @@
+.BurgerButton {
+
+}
+
+@media (min-width: 500px) {
+  .BurgerButton {
+    display: none;
+  }
+}
