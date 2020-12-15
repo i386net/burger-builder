@@ -1,0 +1,22 @@
+.BurgerButton {
+  width: 25px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  /*position: relative;*/
+}
+
+.BurgerButton::before {
+  content: '';
+  width: 25px;
+  border-top: 2px solid white;
+}
+
+
+@media (min-width: 500px) {
+  .BurgerButton {
+    display: none;
+  }
+}
