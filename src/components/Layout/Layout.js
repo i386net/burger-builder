@@ -15,8 +15,10 @@ export default class Layout extends Component {
   }
 
   sideBarOpenHandler = () => {
-    this.setState({
-      showSideBar: true,
+    this.setState((prevState) => {
+      return {
+        showSideBar: !prevState.showSideBar,
+      }
     })
   }
 
