@@ -7,7 +7,7 @@ const BurgerButton = ({open}) => {
   };
 
   return (
-    <div className={styles.BurgerButton} onClick={buttonHandler}>X</div>
+    <div className={styles.BurgerButton} onClick={buttonHandler} />
   )
 }
 
