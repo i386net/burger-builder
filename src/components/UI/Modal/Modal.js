@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Modal.module.css'
-import Aux from '../../../hoc/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 const Modal = (props) => {
   return (
-    <Aux>
+    <>
       <Backdrop  show={props.show} clicked={props.modalClosed}/>
-    {/*// todo: move styles to css-classes*/}
       <div
         className={styles.Modal}
         style={{
@@ -17,8 +15,10 @@ const Modal = (props) => {
       >
         {props.children}
       </div>
-    </Aux>
+    </>
   )
 }
+// убираем рендер закрытого модального окна!
+const areEqual = (prevProps, nextProps) => prevProps.show === nextProps.show;
 
-export default Modal;
+export default memo(Modal, areEqual);
