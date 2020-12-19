@@ -18,7 +18,9 @@ const Modal = (props) => {
     </>
   )
 }
-// убираем рендер закрытого модального окна!
-const areEqual = (prevProps, nextProps) => prevProps.show === nextProps.show;
+// убираем рендер закрытого модального окна и показываем спиннер!
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.show === nextProps.show && prevProps.children === nextProps.children;
+};
 
 export default memo(Modal, areEqual);

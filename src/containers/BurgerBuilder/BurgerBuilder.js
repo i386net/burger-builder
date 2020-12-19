@@ -3,6 +3,7 @@ import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import INGREDIENT_PRICES from '../../constants/ingridient-prices';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import dbInstance from '../../utility/axios';
@@ -18,6 +19,7 @@ export default class BurgerBuilder extends Component {
     totalPrice: 4,
     purchasable: false, // активация кнопки
     purchasing: false, // активация модального окна!
+    loading: false, // spinner state
   }
 
   updatePurchaseState = (ingredients) => {
@@ -70,6 +72,9 @@ export default class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
+    this.setState({
+      loading: true,
+    });
     const order = {
       ingredients: this.state.ingredients,
       total: this.state.totalPrice,
@@ -86,8 +91,20 @@ export default class BurgerBuilder extends Component {
     }
     // добавляем эндпоинт для Firebase c расширением json!
     dbInstance.post('/orders.json', order)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        });
+        console.log(res);
+      })
+      .catch(err => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        });
+        console.log(err);
+      });
   }
 
   render() {
@@ -98,14 +115,18 @@ export default class BurgerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0; // если ингредиентов 0 или меньше false
     }
 
+    let orderSummary = <OrderSummary
+      ingredients={ingredients}
+      price={totalPrice}
+      purchaseCancel={this.purchaseCancelHandler}
+      purchaseContinue={this.purchaseContinueHandler}/>;
+
+    orderSummary = this.state.loading? <Spinner />: orderSummary;
+
     return (
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseHandler}>
-          <OrderSummary
-            ingredients={ingredients}
-            price={totalPrice}
-            purchaseCancel={this.purchaseCancelHandler}
-            purchaseContinue={this.purchaseContinueHandler}/>
+          {orderSummary}
         </Modal>
         <Burger ingredients={ingredients}/>
         <BuildControls
