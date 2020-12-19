@@ -5,6 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import INGREDIENT_PRICES from '../../constants/ingridient-prices';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import dbInstance from '../../utility/axios';
 
 export default class BurgerBuilder extends Component {
   state = {
@@ -69,7 +70,24 @@ export default class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    alert('🤷‍♂️ This part is not ready yet')
+    const order = {
+      ingredients: this.state.ingredients,
+      total: this.state.totalPrice,
+      customer: {
+        name: 'John Dow',
+        address: {
+          city: 'Test City',
+          street: 'Test Street',
+          postCode: '0123456789',
+        },
+        email: 'test@example.com',
+      },
+      delivery: 'fastest',
+    }
+    // добавляем эндпоинт для Firebase c расширением json!
+    dbInstance.post('/orders.json', order)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
